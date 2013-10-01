@@ -5,8 +5,7 @@ var JumpingDancer = function(top, left, timeBetweenSteps){
 };
 JumpingDancer.prototype = Object.create(Dancer.prototype);
 JumpingDancer.prototype.constructor = JumpingDancer;
-JumpingDancer.prototype.step = function(){
-  this.$node.animate({top:'+=20px'});
-  this.$node.animate({top:'-=20px'}, 20);
-  this.stepper(this);
-}
+JumpingDancer.prototype.step = function(moveTime){
+  this.$node.animate({top:'+=20px'}, moveTime/2);
+  this.$node.animate({top:'-=20px'}, moveTime/2);
+};
