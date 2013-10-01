@@ -19,14 +19,18 @@ StaticDancer.prototype.step = function(){
   } else{
     topDistance = '-=' + randomInt + 'px' ;
   }
-  randomInt =  Math.floor(Math.random()*20)+1;
+  randomInt =  Math.floor(Math.random()*20) + 1;
   if((randomInt%2 === 0 || nodePosition.left < pad) && !(nodePosition.left > maxWidth )){
     leftDistance = '+=' + randomInt + 'px' ;
   } else{
     leftDistance= '-=' + randomInt + 'px' ;
   }
-
+  //makes it move!
   this.$node.animate({top:topDistance, left:leftDistance}, timeInt);
+  //changes color
+  this.setColor(this);
+  this.changeShape(this);
+
 
   this.stepper(this);
 }
