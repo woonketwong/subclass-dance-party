@@ -5,38 +5,42 @@ StaticDancer.prototype = Object.create(Dancer.prototype);
 StaticDancer.prototype.constructor = StaticDancer;
 StaticDancer.prototype.step = function(){
 
+  //changes color
+  this.changeColor(this);
+  this.changeShape(this);
+
   var topDistance, leftDistance;
-  var randomInt =  Math.floor(Math.random() * 30) + 1;
-  var timeInt = Math.floor(Math.random() * 500) + 200;
+  var moveSpeed = 400;
+  var maxDistance = 100;
+  var x =  Math.floor(Math.random() * maxDistance) + 1;
+  var y = Math.floor(Math.sqrt(Math.pow(maxDistance,2) - Math.pow(x,2)));
+  //var moveSpeed = Math.floor(Math.random() * 500) + 200;
 
   var nodePosition = this.$node.position();
   var pad = 40;
   var maxWidth = $(window).width() - pad;
   var maxHeight = $(window).height() - pad;
+  
 
-
-  if((randomInt%2 === 0 || nodePosition.top < pad) && !(nodePosition.top > maxHeight )){
-    topDistance = '+=' + randomInt + 'px' ;
+  if((y%2 === 0 || nodePosition.top < pad) && !(nodePosition.top > maxHeight )){
+    topDistance = '+=' + y + 'px' ;
   } else{
-    topDistance = '-=' + randomInt + 'px' ;
+    topDistance = '-=' + y + 'px' ;
   }
-  randomInt =  Math.floor(Math.random()*20) + 1;
-  if((randomInt%2 === 0 || nodePosition.left < pad) && !(nodePosition.left > maxWidth )){
-    leftDistance = '+=' + randomInt + 'px' ;
+  if((x%2 === 0 || nodePosition.left < pad) && !(nodePosition.left > maxWidth )){
+    leftDistance = '+=' + x + 'px' ;
   } else{
-    leftDistance= '-=' + randomInt + 'px' ;
+    leftDistance= '-=' + x + 'px' ;
   }
   //makes it move!
   // console.log(Dancer.linedUp);
   if(!Dancer.linedUp){
-    this.$node.animate({top:topDistance, left:leftDistance}, timeInt);
+    this.$node.animate({top:topDistance, left:leftDistance}, moveSpeed);
   }
-  //changes color
-  this.changeColor(this);
-  this.changeShape(this);
 
 
-  this.stepper(this);
+
+  //this.stepper(this);
 };
 
 //StaticDancer.
