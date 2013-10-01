@@ -3,18 +3,16 @@ var StaticDancer = function(top, left, timeBetweenSteps){
 };
 StaticDancer.prototype = Object.create(Dancer.prototype);
 StaticDancer.prototype.constructor = StaticDancer;
-StaticDancer.prototype.step = function(){
+StaticDancer.prototype.step = function(moveTime){
 
   //changes color
   this.changeColor(this);
   this.changeShape(this);
 
   var topDistance, leftDistance;
-  var moveSpeed = 400;
   var maxDistance = 100;
   var x =  Math.floor(Math.random() * maxDistance) + 1;
   var y = Math.floor(Math.sqrt(Math.pow(maxDistance,2) - Math.pow(x,2)));
-  //var moveSpeed = Math.floor(Math.random() * 500) + 200;
 
   var nodePosition = this.$node.position();
   var pad = 40;
@@ -35,12 +33,8 @@ StaticDancer.prototype.step = function(){
   //makes it move!
   // console.log(Dancer.linedUp);
   if(!Dancer.linedUp){
-    this.$node.animate({top:topDistance, left:leftDistance}, moveSpeed);
+    this.$node.animate({top:topDistance, left:leftDistance}, moveTime);
   }
-
-
-
-  //this.stepper(this);
 };
 
 //StaticDancer.

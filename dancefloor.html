@@ -13,10 +13,11 @@
 
     <div class="topbar">
       <span class="title">object dance party</span>
-      <a href="#" class="linedUp" >lined up</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add a blinky dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="JumpingDancer">add a jumping dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="StaticDancer">add a static dancer</a>
+      <a href="#" class="linedUp" >line up</a>
+      <a href="#" class="dancing">Start dancing!</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add blinky dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="JumpingDancer">add jumping dancer</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="StaticDancer">add static dancer</a>
     </div>
 
     <script>
@@ -25,6 +26,15 @@
 
         $(".linedUp").on("click", function(event){
           Dancer.lineUp(window.dancers);
+        });
+        $(".dancing").on("click", function(event){
+          if($(this).text() === 'Start dancing!'){
+            $(this).text('Stop dancing!');
+            Dancer.startDancing(window.dancers);
+          }else{
+            $(this).text('Start dancing!');
+            Dancer.stopDancing(window.dancers);
+          }
         });
         $(".addDancerButton").on("click", function(event){
           /* This function sets up the click handlers for the create-dancer
