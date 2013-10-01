@@ -1,5 +1,3 @@
-
-
 var BlinkyDancer = function(top, left, timeBetweenSteps){
   Dancer.apply(this, arguments);
 };
@@ -10,6 +8,3 @@ BlinkyDancer.prototype.step = function(){
   this.stepper(this);
   this.$node.toggle();
 }
-// BlinkyDancer.prototype.danceStep = function(){
-//   this.$node.toggle();
-//}
