@@ -2,14 +2,20 @@ var Dancer = function(top, left, timeBetweenSteps){
   this._timeBetweenSteps = timeBetweenSteps;
   this.$node = $('<div class="dancer"></div>');
   this.setPosition(top, left);
-  this.step();
+  Dancer.stepper();
+  this._timeOutID;
+    //var opacity = Math.random() + 0.1;
+  this.$node.css({'opacity': (Math.random() + 0.1)});
 };
 
-Dancer.linedUp = false;
+// Dancer.prototype.stepper = function(instance){
+//   instance._timeOutID = setTimeout(function(){
+//     instance.step();}, instance._timeBetweenSteps);
+// };
 
-Dancer.prototype.stepper = function(instance){
-  setTimeout(function(){instance.step();}, instance._timeBetweenSteps);
-};
+Dancer.prototype.stepper = function(){
+  _
+}
 
 Dancer.prototype.setPosition = function(top, left){
   var styleSettings = {
@@ -31,7 +37,7 @@ Dancer.prototype.generateColor = function(){
 Dancer.prototype.changeColor = function(instance){
   var bgColor = '#' + instance.generateColor();
   var borderColor = '#' + instance.generateColor();
-
+  //var opacity = Math.random() + 0.1;
   instance.$node.css({'background-color': bgColor, 'border-color': borderColor});
 }
 
@@ -51,6 +57,8 @@ Dancer.lineUp = function(dancers){
   var x = 10;
   var y = 60;
   for (var i = 0; i < dancers.length; i++) {
+    clearTimeout(dancers[i]._timeOutID);
+    dancers[i].$node.stop();
     //set timeout
     dancers[i].$node.animate({top: y+'px',left: x+'px'});
     if(x < $(window).width() - 100){
@@ -58,7 +66,7 @@ Dancer.lineUp = function(dancers){
     } else if(y < $(window).height() - 100){
       y += dancers[i].$node.height();
     } else if( x > 100){
-      x -= dancers[i].$node.width();
+      x += -dancers[i].$node.width();
     } else{
       y -= dancers[i].$node.height();
     }

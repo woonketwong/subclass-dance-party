@@ -27,10 +27,8 @@ StaticDancer.prototype.step = function(){
     leftDistance= '-=' + randomInt + 'px' ;
   }
   //makes it move!
-  // console.log(Dancer.linedUp);
-  if(!Dancer.linedUp){
-    this.$node.animate({top:topDistance, left:leftDistance}, timeInt);
-  }
+  this.$node.animate({top:topDistance, left:leftDistance}, timeInt);
+
   //changes color
   this.changeColor(this);
   this.changeShape(this);
