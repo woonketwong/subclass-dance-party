@@ -6,8 +6,7 @@ var Dancer = function(top, left, timeBetweenSteps){
 };
 
 Dancer.prototype.stepper = function(instance){
-  instance.$node.toggle();
-  setTimeout(function(){instance.stepper(instance);}, instance._timeBetweenSteps);
+  setTimeout(function(){instance.step();}, instance._timeBetweenSteps);
 };
 
 Dancer.prototype.setPosition = function(top, left){
