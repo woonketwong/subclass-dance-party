@@ -13,6 +13,7 @@
 
     <div class="topbar">
       <span class="title">object dance party</span>
+      <a href="#" class="linedUp" >lined up</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add a blinky dancer</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="JumpingDancer">add a jumping dancer</a>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="StaticDancer">add a static dancer</a>
@@ -22,6 +23,9 @@
       $(document).ready(function(){
         window.dancers = [];
 
+        $(".linedUp").on("click", function(event){
+          Dancer.lineUp(window.dancers);
+        });
         $(".addDancerButton").on("click", function(event){
           /* This function sets up the click handlers for the create-dancer
            * buttons on index.html. You should not need to alter it.
@@ -46,6 +50,8 @@
             $("body").width() * Math.random(),
             Math.random() * 1000
           );
+
+          window.dancers.push(dancer);
 
           $('body').append(dancer.$node);
         });

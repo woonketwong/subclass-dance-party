@@ -1,5 +1,7 @@
 var JumpingDancer = function(top, left, timeBetweenSteps){
   Dancer.apply(this, arguments);
+  this.changeShape(this);
+  this.changeColor(this);
 };
 JumpingDancer.prototype = Object.create(Dancer.prototype);
 JumpingDancer.prototype.constructor = JumpingDancer;

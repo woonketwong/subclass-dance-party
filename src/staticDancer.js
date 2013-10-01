@@ -14,6 +14,7 @@ StaticDancer.prototype.step = function(){
   var maxWidth = $(window).width() - pad;
   var maxHeight = $(window).height() - pad;
 
+
   if((randomInt%2 === 0 || nodePosition.top < pad) && !(nodePosition.top > maxHeight )){
     topDistance = '+=' + randomInt + 'px' ;
   } else{
@@ -26,11 +27,16 @@ StaticDancer.prototype.step = function(){
     leftDistance= '-=' + randomInt + 'px' ;
   }
   //makes it move!
-  this.$node.animate({top:topDistance, left:leftDistance}, timeInt);
+  // console.log(Dancer.linedUp);
+  if(!Dancer.linedUp){
+    this.$node.animate({top:topDistance, left:leftDistance}, timeInt);
+  }
   //changes color
-  this.setColor(this);
+  this.changeColor(this);
   this.changeShape(this);
 
 
   this.stepper(this);
-}
+};
+
+//StaticDancer.
